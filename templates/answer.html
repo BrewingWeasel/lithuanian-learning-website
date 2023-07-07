@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Answer Page!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    {% for text, lemma, case in words %}
+    {% if case %}
+    <p1 class={{case[0]}}>{{text}}</p1>
+    {% else %}
+    <p1>{{text}}</p1>
+    {% endif %}
+    {% endfor %}
+</body>
+</html>
