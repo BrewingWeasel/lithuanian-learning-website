@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
-    {% for text, lemma, case in words %}
+    {% for text, ending, lemma, case in words %}
     {% if case %}
-    <p1 class={{case[0]}}>{{text}}</p1>
+    <p1 class="word">{{text}}<span class={{case[0]}}>{{ending}}</span></p1>
     {% else %}
-    <p1>{{text}}</p1>
+    <p1 class="word">{{text}}</p1>
     {% endif %}
     {% endfor %}
 </body>

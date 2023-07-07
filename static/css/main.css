@@ -47,6 +47,10 @@ textarea {
   color: #c4a7e7;
 }
 
+.word:hover { 
+  background-color: #524f67;
+}
+
 .container {
   text-align: center;
 }
