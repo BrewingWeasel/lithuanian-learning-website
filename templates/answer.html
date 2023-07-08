@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Answer Page!</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-</head>
-<body class="word_area">
+{% extends "base.html" %}
+{% block title %}Lithuanian reader{% endblock %}
+{% block content %}
+<div class="word_area">
     {% for text, ending, lemma, case in words %}
     {% if text.startswith("\r\n") %}
     <br>
@@ -17,5 +13,5 @@
     {% endif %}
     {% endif %}
     {% endfor %}
-</body>
-</html>
+</div>
+{% endblock %}

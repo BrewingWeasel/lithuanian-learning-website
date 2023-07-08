@@ -94,6 +94,10 @@ ENDINGS = {
     ],
 }
 
+ALL_ENDINGS = []
+for i in ENDINGS.values():
+    ALL_ENDINGS += i
+
 
 def analyze(text):
     doc = nlp(text)
@@ -114,5 +118,4 @@ def analyze(text):
         else:
             final_vals.append(
                 (token.text, "", token.lemma_, token.morph.get("Case")))
-    print(final_vals)
     return final_vals
