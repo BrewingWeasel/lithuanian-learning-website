@@ -5,12 +5,16 @@
     <title>Answer Page!</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
-<body>
+<body class="word_area">
     {% for text, ending, lemma, case in words %}
+    {% if text.startswith("\r\n") %}
+    <br>
+    {% else %}
     {% if case %}
     <p1 class="word">{{text}}<span class={{case[0]}}>{{ending}}</span></p1>
     {% else %}
     <p1 class="word">{{text}}</p1>
+    {% endif %}
     {% endif %}
     {% endfor %}
 </body>

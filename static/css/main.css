@@ -47,6 +47,10 @@ textarea {
   color: #c4a7e7;
 }
 
+.word_area {
+  margin: 4em;
+}
+
 .word:hover { 
   background-color: #524f67;
 }

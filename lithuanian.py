@@ -11,3 +11,8 @@ def analyze_page():
         return render_template("answer.html", words=analyze.analyze(text))
     else:
         return render_template("input.html")
+
+
+@app.route("/resources")
+def resources():
+    return render_template("resources.html")

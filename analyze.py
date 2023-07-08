@@ -114,4 +114,5 @@ def analyze(text):
         else:
             final_vals.append(
                 (token.text, "", token.lemma_, token.morph.get("Case")))
+    print(final_vals)
     return final_vals
