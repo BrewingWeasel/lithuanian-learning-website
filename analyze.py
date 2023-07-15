@@ -103,19 +103,19 @@ def analyze(text):
     doc = nlp(text)
     final_vals = []
     for token in doc:
+        print(token.morph.get("Gender"))
+
+        def get_vals(text, ending):
+            final_vals.append((text, ending, token.lemma_, token.morph.get(
+                "Case"), token.morph.get("Gender"), token.morph.get("Number")))
         if token.morph.get("Case"):
             for i in ENDINGS[token.morph.get("Case")[0]]:
                 if token.text.endswith(i):
-                    final_vals.append((
-                        token.text.rstrip(
-                            i), i, token.lemma_, token.morph.get("Case")
-                    ))
+                    get_vals(token.text.rstrip(i), i)
                     break
             else:
-                final_vals.append(
-                    ("", token.text, token.lemma_, token.morph.get("Case"))
-                )
+                get_vals("", token.text)
         else:
-            final_vals.append(
-                (token.text, "", token.lemma_, token.morph.get("Case")))
+            get_vals(token.text, "")
+    print(final_vals)
     return final_vals

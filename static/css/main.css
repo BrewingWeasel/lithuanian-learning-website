@@ -109,31 +109,31 @@ a {
   text-decoration: underline;
 }
 
-.the_word {
+#the_word {
   padding: 0;
   font-size: 45px;
 }
 
-.the_word_lemma {
+#the_word_lemma {
   padding: 0;
   margin: 0;
   font-size: 20px;
   color: #908caa;
 }
 
-.stress_pattern {
+#stress_pattern {
   color: #eb6f92;
 }
 
-.dict_link {
+#dict_link {
   color: #c4a7e7;
 }
 
-.forvo_link {
+#forvo_link {
   color: #9ccfd8;
 }
 
-.wiktionary_link {
+#wiktionary_link {
   color: #31748f;
 }
 

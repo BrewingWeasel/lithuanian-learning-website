@@ -3,31 +3,32 @@
 {% block content %}
 <div class="row">
 <div class="word_area">
-    {% for text, ending, lemma, case in words %}
+    {% for text, ending, lemma, case, gender, number in words %}
     {% if text.startswith("\r\n") %}
     <br>
     {% else %}
     {% if case %}
-    <p1 class="word">{{text}}<span class={{case[0]}}>{{ending}}</span></p1>
+    <p1 class="word" lemma={{lemma}} case={{case[0]}} number={{number[0]}} gender={{gender[0]}} morphed_word={{text}}{{ending}}>{{text}}<span class={{case[0]}}>{{ending}}</span></p1>
     {% else %}
-    <p1 class="word">{{text}}</p1>
+    <p1 class="word" lemma={{lemma}} morphed_word={{text}}>{{text}}</p1>
     {% endif %}
     {% endif %}
     {% endfor %}
 </div>
   <div class="specific_word">
-    <h1 class="the_word">Kalnu</h1>
-    <h2 class="the_word_lemma">(Kalnas)</h2>
-    <p class="morphology"><a class="Ins" href="instrumental">Instrumental</a> form of Kalnas</p>
-    <hr class="solid">
-    <p class="gender">Masculine</>
-    <p class="declension_pattern">Declension Pattern 1</>
-    <p><a class="stress_pattern" href="https://en.wikipedia.org/wiki/Lithuanian_accentuation">Stress Pattern 3</a></p>
-    <p class="plural">Plural: kalnaĩ</>
-    <hr class="solid">
-    <p><a class="wiktionary_link" href="https://en.wiktionary.org/wiki/kalnas#Lithuanian">Wiktionary</a></p>
-    <p><a class="forvo_link" href="https://forvo.com/search/kalnas/lt/">Pronounciation (forvo)</a></p>
-    <p><a class="dict_link" href="http://www.lietuviu-anglu.com/kalnas/">Definition (lietuviu-anglu.com)</a></p>
+    <h1 id="the_word">Kalnu</h1>
+    <h2 id="the_word_lemma">(Kalnas)</h2>
+    <p id="case_morphology"><a id="case" class="Ins" href="instrumental">Instrumental</a> form of Kalnas</p>
+    <hr id="solid">
+    <p id="gender">Masculine</>
+    <p id="declension_pattern">Declension Pattern 1</>
+    <p><a id="stress_pattern" href="https://en.wikipedia.org/wiki/Lithuanian_accentuation">Stress Pattern 3</a></p>
+    <p id="plural">Plural: kalnaĩ</>
+    <hr id="solid">
+    <p><a id="wiktionary_link" href="https://en.wiktionary.org/wiki/kalnas#Lithuanian">Wiktionary</a></p>
+    <p><a id="forvo_link" href="https://forvo.com/search/kalnas/lt/">Pronounciation (forvo)</a></p>
+    <p><a id="dict_link" href="http://www.lietuviu-anglu.com/kalnas/">Definition (lietuviu-anglu.com)</a></p>
   </div>
 </div>
+    <script src="{{url_for('static', filename='answerdetails.js')}}"></script>
 {% endblock %}
