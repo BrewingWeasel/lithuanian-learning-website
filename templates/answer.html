@@ -3,14 +3,14 @@
 {% block content %}
 <div class="row">
 <div class="word_area">
-    {% for text, ending, lemma, case, gender, number in words %}
+    {% for text, ending, lemma, case, gender, number, verb_vals in words %}
     {% if text.startswith("\r\n") %}
     <br>
     {% else %}
     {% if case %}
     <p1 class="word" lemma={{lemma}} case={{case[0]}} number={{number[0]}} gender={{gender[0]}} morphed_word={{text}}{{ending}}>{{text}}<span class={{case[0]}}>{{ending}}</span></p1>
     {% else %}
-    <p1 class="word" lemma={{lemma}} morphed_word={{text}}>{{text}}</p1>
+    <p1 class="word" lemma={{lemma}} verb_values="{{verb_vals}}" morphed_word={{text}}>{{text}}</p1>
     {% endif %}
     {% endif %}
     {% endfor %}
@@ -19,6 +19,7 @@
     <h1 id="the_word">Kalnu</h1>
     <h2 id="the_word_lemma">(Kalnas)</h2>
     <p id="case_morphology"><a id="case" class="Ins" href="instrumental">Instrumental</a> form of Kalnas</p>
+    <p id="verb_vals"></p>
     <hr id="solid">
     <p id="gender">Masculine</>
     <p id="declension_pattern">Declension Pattern 1</>

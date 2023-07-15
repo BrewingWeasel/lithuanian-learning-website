@@ -1,4 +1,5 @@
 import spacy
+from verb_endings import get_endings
 
 nlp = spacy.load("lt_core_news_lg")
 
@@ -103,11 +104,15 @@ def analyze(text):
     doc = nlp(text)
     final_vals = []
     for token in doc:
-        print(token.morph.get("Gender"))
-
         def get_vals(text, ending):
+            if token.pos_ == "VERB":
+                verb_endings = str(get_endings(token.lemma_)).lstrip(
+                    "(").rstrip(")").replace("'", "")
+                print(verb_endings)
+            else:
+                verb_endings = ""
             final_vals.append((text, ending, token.lemma_, token.morph.get(
-                "Case"), token.morph.get("Gender"), token.morph.get("Number")))
+                "Case"), token.morph.get("Gender"), token.morph.get("Number"), verb_endings))
         if token.morph.get("Case"):
             for i in ENDINGS[token.morph.get("Case")[0]]:
                 if token.text.endswith(i):
@@ -117,5 +122,6 @@ def analyze(text):
                 get_vals("", token.text)
         else:
             get_vals(token.text, "")
-    print(final_vals)
+    for i in final_vals:
+        print(i, len(i))
     return final_vals
