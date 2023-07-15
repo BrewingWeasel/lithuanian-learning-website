@@ -1,18 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Lithuanian resources</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-</head>
-<body >
-  <dl>
-    <dl>
-        <dt><a href=https://www.lrt.lt/>LRT</a></dt>
-      <dd>News</dd>
-        <dt><a href=https://www.delfi.lt/>Delfi</a></dt>
-      <dd>More news</dd>
-    </dl>
-  </dl>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Resources for Lithuanian{% endblock %}
+{% block content %}
+<div class="resources">
+  <h1>Lithuanian media</h1>
+  <ul>
+    <h2>News</h2>
+    <hr class="solid">
+    <li>
+      <h3><a href="https://lrt.lt">LRT</a></h3>
+      <p>High quality news about Lithuania and the world, also has videos, podcasts and a lot more.</p>
+    </li>
+    <li>
+      <h3><a href="https://delfi.lt">Delfi</a></h3>
+      <p>Large news site with lots of news in Lithuanian. Also has videos and a youtube channel.</p>
+    </li>
+    <h2>Videos + Movies</h2>
+    <hr class="solid">
+    <li>
+      <h3><a href="https://play.tv3.lt/">Tv3</a></h3>
+      <p>Lots of different content (available outside of Lithuania) for free after watching ads. Has news and sports matches.</p>
+    </li>
+    <li>
+      <h3><a href="https://www.lrt.lt/mediateka/rekomenduojame/filmai">LRT</a></h3>
+      <p>Films and shows for free (many about Lithuanian culture), though some are blocked outside of Lithuania. Does not have subtitles (though may in Lithuania)</p>
+    </li>
+    <li>
+      <h3><a href="https://go3.lt">Go3</a></h3>
+      <p>Owned by the same group as tv3. Has lots of movies and tv shows and you can either pay for subscriptions or for individual videos. Has a lot of different content in Lithuanian, some of it with subtitles. Although it is blocked outside of Lithuania, they also have Estonian and Latvian websites which also contain Lithuanian audio. Has many disney movies.</p>
+    </li>
+    <h2>Youtube</h2>
+    <li>
+      <h3><a href="https://www.youtube.com/@cestovas/featured">Cestovas</a></h3>
+      <p>Popular influencer with lots of interesting content. Has a series about walking from one side of Lithuania to the other, as well as one where he has various influencers compete in answering questions from different grades in school.</p>
+    </li>
+    <li>
+      <h3><a href="https://www.youtube.com/@PauliusSamoska">Paulius Samoška</a></h3>
+      <p>Makes videos about interesting places around europe (generally abandoned). Also creates videos about interesting trips, including to Transnistria and Armenia.</p>
+    </li>
+    <li>
+      <h3><a href="https://www.youtube.com/@kotaro_lietuva">Kotoro Hisada</a></h3>
+      <p>Japonese youtuber who taught himself Lithuanian. Creates videos in Lithuanian talking about Japan, his experience learning Lithuanian, and travels around Lithuania.</p>
+    </li>
+  </ul>
+</div>
+{% endblock %}

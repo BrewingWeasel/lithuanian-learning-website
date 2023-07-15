@@ -31,7 +31,6 @@ li a:hover {
 }
 
 h1 {
-  background-color: ;
   height: 35px;
   width: 100%;
 }
@@ -46,6 +45,19 @@ textarea {
   border: solid;
   border-radius: 1em;
   border-color: #c4a7e7;
+}
+
+hr {
+  color: #908caa;
+}
+
+
+dt {
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
 }
 
 .Gen {
@@ -72,8 +84,57 @@ textarea {
   color: #c4a7e7;
 }
 
+.row {
+  display: flex;
+}
+
 .word_area {
   margin: 4em;
+  flex: 70%;
+}
+
+.specific_word {
+  background-color: #26233a;
+  border-radius: 8px;
+  margin: 1em 0.3em;
+  padding: 0.6em 3em;
+  text-align: center;
+  font-size: 18px;
+}
+
+.specific_word a {
+  text-decoration: none;
+}
+.specific_word a:hover {
+  text-decoration: underline;
+}
+
+.the_word {
+  padding: 0;
+  font-size: 45px;
+}
+
+.the_word_lemma {
+  padding: 0;
+  margin: 0;
+  font-size: 20px;
+  color: #908caa;
+}
+
+.stress_pattern {
+  color: #eb6f92;
+}
+
+.dict_link {
+  color: #c4a7e7;
+}
+
+.forvo_link {
+  color: #9ccfd8;
+}
+
+.wiktionary_link {
+  color: #31748f;
 }
 
 .word:hover { 
@@ -99,4 +160,12 @@ textarea {
 .button:hover {
   background-color: #403d52;
   border-width: thick;
+}
+
+.resources {
+  text-align: center;
+}
+
+.resources li {
+  float: none;
 }

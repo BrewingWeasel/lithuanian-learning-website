@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Lithuanian reader{% endblock %}
 {% block content %}
+<div class="row">
 <div class="word_area">
     {% for text, ending, lemma, case in words %}
     {% if text.startswith("\r\n") %}
@@ -13,5 +14,20 @@
     {% endif %}
     {% endif %}
     {% endfor %}
+</div>
+  <div class="specific_word">
+    <h1 class="the_word">Kalnu</h1>
+    <h2 class="the_word_lemma">(Kalnas)</h2>
+    <p class="morphology"><a class="Ins" href="instrumental">Instrumental</a> form of Kalnas</p>
+    <hr class="solid">
+    <p class="gender">Masculine</>
+    <p class="declension_pattern">Declension Pattern 1</>
+    <p><a class="stress_pattern" href="https://en.wikipedia.org/wiki/Lithuanian_accentuation">Stress Pattern 3</a></p>
+    <p class="plural">Plural: kalnaĩ</>
+    <hr class="solid">
+    <p><a class="wiktionary_link" href="https://en.wiktionary.org/wiki/kalnas#Lithuanian">Wiktionary</a></p>
+    <p><a class="forvo_link" href="https://forvo.com/search/kalnas/lt/">Pronounciation (forvo)</a></p>
+    <p><a class="dict_link" href="http://www.lietuviu-anglu.com/kalnas/">Definition (lietuviu-anglu.com)</a></p>
+  </div>
 </div>
 {% endblock %}
