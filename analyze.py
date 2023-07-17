@@ -1,7 +1,7 @@
 import spacy
 from verb_endings import get_endings
 
-nlp = spacy.load("lt_core_news_lg")
+nlp = spacy.load("data/better_lithuanian_model")
 
 
 ENDINGS = {
