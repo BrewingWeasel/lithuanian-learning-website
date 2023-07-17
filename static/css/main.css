@@ -137,6 +137,10 @@ a {
   color: #31748f;
 }
 
+.word {
+  cursor: pointer;
+}
+
 .word:hover { 
   background-color: #524f67;
 }
