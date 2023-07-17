@@ -27,7 +27,7 @@ Ukraina ne kartą pabrėžė, kad Kerčės tiltas – neteisėtas Rusijos statin
 Ukrainos žvalgybos valdybai esą artimas „Meduza.io“ šaltinis taip pat patvirtino Ukrainos žiniasklaidos skelbiamą informaciją ir pridūrė, kad šiai atakai buvo naudojami tie patys dronai, kurie naudoti ir atakai Sevastopolyje prieš 3 mėnesius."""
 
 start_time = time.time()
-nlp = spacy.load("output/model-best")
+nlp = spacy.load("data/better_lithuanian_model/")
 doc = nlp(SENTENCE)
 print("--- %s seconds ---" % (time.time() - start_time))
 
@@ -37,7 +37,7 @@ doc2 = nlp2(SENTENCE)
 print("--- %s seconds ---" % (time.time() - start_time))
 
 
-for (mine, spacies) in zip(doc, doc2):
+for mine, spacies in zip(doc, doc2):
     if mine.lemma_ != spacies.lemma_:
         print(mine.text)
         print(f"Mine: {mine.lemma_}")

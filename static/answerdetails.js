@@ -20,6 +20,7 @@ const cases = {
   "Loc": "Locative",
   "Dat": "Dative",
   "Voc": "Vocative",
+  "Ill": "Illative",
 };
 
 const numbers = {

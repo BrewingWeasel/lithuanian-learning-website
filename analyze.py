@@ -1,5 +1,10 @@
 import spacy
 from verb_endings import get_endings
+from phonology_engine import PhonologyEngine
+from accentuation import match_case, remove_accents
+import unicodedata
+
+pe = PhonologyEngine()
 
 nlp = spacy.load("data/better_lithuanian_model")
 
@@ -93,6 +98,7 @@ ENDINGS = {
         "enys",
         "erys",
     ],
+    "Ill": ["on", "in", "ėn", "uosna", "ysna", "sna", "n"],
 }
 
 ALL_ENDINGS = []
@@ -101,27 +107,55 @@ for i in ENDINGS.values():
 
 
 def analyze(text):
+
+    res = pe.process(text)
+    words_with_accents = []
+    for word_details, phrase, normalized_phrase, letter_map in res:
+        for word_detail in word_details:
+            words_with_accents.append(
+                word_detail["utf8_stressed_word"].lower())
+
     doc = nlp(text)
     final_vals = []
     for token in doc:
+        if words_with_accents and token.text.lower() == remove_accents(words_with_accents[0]):
+            token_text = match_case(words_with_accents[0], token.text)
+            words_with_accents.pop(0)
+        else:
+            token_text = token.text
+
         def get_vals(text, ending):
+            # print(text, ending)
             if token.pos_ == "VERB":
-                verb_endings = str(get_endings(token.lemma_)).lstrip(
-                    "(").rstrip(")").replace("'", "")
-                print(verb_endings)
+                verb_endings = (
+                    str(get_endings(token.lemma_))
+                    .lstrip("(")
+                    .rstrip(")")
+                    .replace("'", "")
+                )
             else:
                 verb_endings = ""
-            final_vals.append((text, ending, token.lemma_, token.morph.get(
-                "Case"), token.morph.get("Gender"), token.morph.get("Number"), verb_endings))
+            final_vals.append(
+                (
+                    text,
+                    ending,
+                    token.lemma_,
+                    token.morph.get("Case"),
+                    token.morph.get("Gender"),
+                    token.morph.get("Number"),
+                    verb_endings,
+                )
+            )
+
         if token.morph.get("Case"):
             for i in ENDINGS[token.morph.get("Case")[0]]:
-                if token.text.endswith(i):
-                    get_vals(token.text.rstrip(i), i)
+                if remove_accents(token_text).endswith(i):
+                    get_vals(
+                        token_text[:-len(i)], unicodedata.normalize('NFC', token_text)[-len(i):])
                     break
             else:
-                get_vals("", token.text)
+                get_vals("", token_text)
         else:
-            get_vals(token.text, "")
-    for i in final_vals:
-        print(i, len(i))
+            get_vals(token_text, "")
     return final_vals
+

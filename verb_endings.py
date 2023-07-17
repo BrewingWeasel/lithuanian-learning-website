@@ -15,13 +15,12 @@ PREFIXES = [
     "at",
     "už",
     "si",
-    "į"
+    "į",
 ]
 
 
 with open("data/verbs", "r") as f:
-    VERB_VALS = {i.split(", ")[0]: i.split(", ")[1:]
-                 for i in f.read().splitlines()}
+    VERB_VALS = {i.split(", ")[0]: i.split(", ")[1:] for i in f.read().splitlines()}
 
 
 def get_endings(verb):
