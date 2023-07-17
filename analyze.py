@@ -108,6 +108,8 @@ for i in ENDINGS.values():
 
 def analyze(text):
 
+    # TODO: clean up
+
     res = pe.process(text)
     words_with_accents = []
     for word_details, phrase, normalized_phrase, letter_map in res:
@@ -135,11 +137,18 @@ def analyze(text):
                 )
             else:
                 verb_endings = ""
+            lemma = ""
+            for i in pe.process(token.lemma_):
+                try:
+                    lemma = i[0][0]["utf8_stressed_word"].lower()
+                    lemma = lemma[0].upper() + lemma[1:]
+                except (TypeError, IndexError):
+                    pass
             final_vals.append(
                 (
                     text,
                     ending,
-                    token.lemma_,
+                    lemma,
                     token.morph.get("Case"),
                     token.morph.get("Gender"),
                     token.morph.get("Number"),
