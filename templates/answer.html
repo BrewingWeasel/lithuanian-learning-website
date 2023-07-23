@@ -3,12 +3,12 @@
 {% block content %}
 <div class="row">
 <div class="word_area">
-    {% for text, ending, lemma, case, gender, number, verb_vals in words %}
+    {% for text, ending, lemma, case, gender, number, declension_pattern, verb_vals in words %}
     {% if text.startswith("\r\n") %}
     <br>
     {% else %}
     {% if case %}
-    <p1 class="word" lemma={{lemma}} case={{case[0]}} number={{number[0]}} gender={{gender[0]}} morphed_word={{text}}{{ending}}>{{text}}<span class={{case[0]}}>{{ending}}</span></p1>
+    <p1 class="word" lemma={{lemma}} case={{case[0]}} number={{number[0]}} gender={{gender[0]}} morphed_word={{text}}{{ending}} declension_pattern={{declension_pattern}}>{{text}}<span class={{case[0]}}>{{ending}}</span></p1>
     {% else %}
     <p1 class="word" lemma={{lemma}} verb_values="{{verb_vals}}" morphed_word={{text}}>{{text}}</p1>
     {% endif %}

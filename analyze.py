@@ -8,6 +8,8 @@ pe = PhonologyEngine()
 
 nlp = spacy.load("data/better_lithuanian_model")
 
+with open("data/third_decl_is", "r") as f:
+    THIRD_DECLENSION_IS = f.read().splitlines()
 
 ENDINGS = {
     "Gen": ["io", "o", "os", "ės", "ies", "aus", "ens", "ers", "ių", "ų", "enų", "erų"],
@@ -98,7 +100,52 @@ ENDINGS = {
         "enys",
         "erys",
     ],
+    "Voc": [
+        "ai",
+        "e",
+        "i",
+        "y",
+        "a",
+        "ė",
+        "au",
+        "enie",
+        "erie",
+        "iai",
+        "ai",
+        "os",
+        "ės",
+        "ys",
+        "ūs",
+        "enys",
+        "erys",
+    ],
     "Ill": ["on", "in", "ėn", "uosna", "ysna", "sna", "n"],
+}
+
+DECLENSION_GROUPS = {
+    "as": 1,
+    "ys": 1,
+    "a": 2,
+    "ė": 2,
+    "us": 4,
+    "uo": 5,
+}
+
+IS_DECLENSIONS = {
+    "io": 1,
+    "iu": 1,
+    "iams": 1,
+    "ius": 1,
+    "iais": 1,
+    "iai": 1,
+    "iouse": 1,
+    "ies": 3,
+    "imi": 3,
+    "ie": 3,
+    "ys": 3,
+    "ims": 3,
+    "imis": 3,
+    "yse": 3,
 }
 
 ALL_ENDINGS = []
@@ -109,7 +156,6 @@ for i in ENDINGS.values():
 def analyze(text):
 
     # TODO: clean up
-
     res = pe.process(text)
     words_with_accents = []
     for word_details, phrase, normalized_phrase, letter_map in res:
@@ -144,6 +190,7 @@ def analyze(text):
                     lemma = lemma[0].upper() + lemma[1:]
                 except (TypeError, IndexError):
                     pass
+
             final_vals.append(
                 (
                     text,
@@ -152,6 +199,7 @@ def analyze(text):
                     token.morph.get("Case"),
                     token.morph.get("Gender"),
                     token.morph.get("Number"),
+                    get_declension(token),
                     verb_endings,
                 )
             )
@@ -168,3 +216,18 @@ def analyze(text):
             get_vals(token_text, "")
     return final_vals
 
+
+def get_declension(token):
+    if token.pos_ == "NOUN":
+        for k, v in DECLENSION_GROUPS.items():
+            if token.lemma_.endswith(k):
+                return str(v)
+        if token.lemma_.endswith("is"):
+            if token.morph.get("Gender") == "Fem" or token.lemma_ in THIRD_DECLENSION_IS:
+                return "3"
+
+            for k, v in IS_DECLENSIONS.items():
+                if token.lemma_.endswith(k):
+                    return str(v)
+
+    return ""
