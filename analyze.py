@@ -218,16 +218,16 @@ def analyze(text):
 
 
 def get_declension(token):
-    if token.pos_ == "NOUN":
+    if token.pos_ == "NOUN" or token.pos_ == "PROPN":
         for k, v in DECLENSION_GROUPS.items():
             if token.lemma_.endswith(k):
                 return str(v)
         if token.lemma_.endswith("is"):
             if token.morph.get("Gender") == "Fem" or token.lemma_ in THIRD_DECLENSION_IS:
                 return "3"
-
             for k, v in IS_DECLENSIONS.items():
                 if token.lemma_.endswith(k):
                     return str(v)
+
 
     return ""
