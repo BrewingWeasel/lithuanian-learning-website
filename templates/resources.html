@@ -1,46 +1,97 @@
 {% extends "base.html" %}
 {% block title %}Resources for Lithuanian{% endblock %}
 {% block content %}
+<script src="{{url_for('static', filename='resources.js')}}"></script>
 <div class="resources">
   <h1>Lithuanian media</h1>
-  <ul>
-    <h2>News</h2>
-    <hr class="solid">
-    <li>
-      <h3><a href="https://lrt.lt">LRT</a></h3>
-      <p>High quality news about Lithuania and the world, also has videos, podcasts and a lot more.</p>
-    </li>
-    <li>
-      <h3><a href="https://delfi.lt">Delfi</a></h3>
-      <p>Large news site with lots of news in Lithuanian. Also has videos and a youtube channel.</p>
-    </li>
-    <h2>Videos + Movies</h2>
-    <hr class="solid">
-    <li>
-      <h3><a href="https://play.tv3.lt/">Tv3</a></h3>
-      <p>Lots of different content (available outside of Lithuania) for free after watching ads. Has news and sports matches.</p>
-    </li>
-    <li>
-      <h3><a href="https://www.lrt.lt/mediateka/rekomenduojame/filmai">LRT</a></h3>
-      <p>Films and shows for free (many about Lithuanian culture), though some are blocked outside of Lithuania. Does not have subtitles (though may in Lithuania)</p>
-    </li>
-    <li>
-      <h3><a href="https://go3.lt">Go3</a></h3>
-      <p>Owned by the same group as tv3. Has lots of movies and tv shows and you can either pay for subscriptions or for individual videos. Has a lot of different content in Lithuanian, some of it with subtitles. Although it is blocked outside of Lithuania, they also have Estonian and Latvian websites which also contain Lithuanian audio. Has many disney movies.</p>
-    </li>
-    <h2>Youtube</h2>
-    <li>
-      <h3><a href="https://www.youtube.com/@cestovas/featured">Cestovas</a></h3>
-      <p>Popular influencer with lots of interesting content. Has a series about walking from one side of Lithuania to the other, as well as one where he has various influencers compete in answering questions from different grades in school.</p>
-    </li>
-    <li>
-      <h3><a href="https://www.youtube.com/@PauliusSamoska">Paulius Samoška</a></h3>
-      <p>Makes videos about interesting places around europe (generally abandoned). Also creates videos about interesting trips, including to Transnistria and Armenia.</p>
-    </li>
-    <li>
-      <h3><a href="https://www.youtube.com/@kotaro_lietuva">Kotoro Hisada</a></h3>
-      <p>Japonese youtuber who taught himself Lithuanian. Creates videos in Lithuanian talking about Japan, his experience learning Lithuanian, and travels around Lithuania.</p>
-    </li>
-  </ul>
+   <!-- Tab links -->
+  <div class="tab">
+    <button class="tablinks" onclick="switchToTab(event, 'news')" id="default">News</button>
+    <button class="tablinks" onclick="switchToTab(event, 'movies_shows')">Movies and Shows</button>
+    <button class="tablinks" onclick="switchToTab(event, 'youtubers')">Youtube</button>
+  </div>
+
+  <!-- Tab content -->
+  <div id="news" class="tabcontent">
+     <table>
+      <tr>
+        <th>Website</th>
+        <th>Cost</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><a target="_blank" href="https://lrt.lt">LRT</a></td>
+        <td class="good">Free</td>
+        <td>Generally high quality news about Lithuania and the world. Besides news, it also has videos, podcasts and a lot more. Easy to find articles about culture.</td>
+      </tr>
+      <tr>
+        <td><a target="_blank" href="https://delfi.lt">Delfi</a></td>
+        <td class="good">Free</td>
+        <td>Large news site with lots of news in Lithuanian. Also has videos and a youtube channel that has some interesting content.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div id="movies_shows" class="tabcontent">
+    <table>
+        <tr>
+          <th>Website</th>
+          <th>Cost</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><a target="_blank" href="https://play.tv3.lt/">Tv3</a></td>
+          <td class="good">Free (with ads)</td>
+          <td>Lots of different content (available outside of Lithuania) for free after watching ads. Has news and sports matches.</td>
+        </tr>
+        <tr>
+          <td><a target="_blank" href="https://www.lrt.lt/mediateka/rekomenduojame/filmai">LRT</a></td>
+          <td class="good">Free</td>
+          <td>Films and shows for free (many about Lithuanian culture), though most are blocked outside of Lithuania. Does not have subtitles (though apparently may in Lithuania?)</td>
+        </tr>
+        <tr>
+          <td><a target="_blank" href="https://go3.lt">Go3</a></td>
+          <td class="bad">Subscription</td>
+          <td>Owned by the same group as tv3. Has lots of movies and tv shows and you can either pay for subscriptions or for individual videos. Has a lot of different content in Lithuanian, some of it with subtitles. Although it is blocked outside of Lithuania, they also have Estonian and Latvian websites which also contain Lithuanian audio. Has many disney movies.</td>
+        </tr>
+    </table>
+  </div>
+
+  <div id="youtubers" class="tabcontent">
+    <table>
+        <tr>
+          <th>Channel</th>
+          <th>Lithuanian subtitles</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><a target="_blank" href="https://www.youtube.com/@cestovas/featured">Cestovas</a></td>
+          <td class="bad">X</td>
+          <td>Popular influencer with lots of interesting content. Has a series about walking from one side of Lithuania to the other, as well as one where he has various influencers compete in answering questions from different grades in school.</td>
+        </tr>
+        <tr>
+          <td><a target="_blank" href="https://www.youtube.com/@PauliusSamoska">Paulius Samoška</a></td>
+          <td class="bad">X</td>
+          <td>Makes videos about interesting places around europe (generally abandoned). Also creates videos about interesting trips, including to Transnistria and Armenia.</td>
+        </tr>
+        <tr>
+          <td><a target=”_blank” href="https://www.youtube.com/@kotaro_lietuva">Kotoro Hisada</a></td>
+          <td class="bad">X</td>
+          <td>Japonese youtuber who taught himself Lithuanian. Creates videos in Lithuanian talking about Japan, his experience learning Lithuanian, and travels around Lithuania.</td>
+        </tr>
+        <tr>
+          <td><a target=”_blank” href="https://www.youtube.com/watch?v=sHQM8SiI15Y">Grybų Karas</a></td>
+          <td class="good">✓</td>
+          <td>Fun animated version of a classic Lithuanian poem for kids. Spoken in a way that makes it very easy to understand, though has some more obscure vocab.</td>
+        </tr>
+  </div>
+
+  <script>
+    document.getElementById("default").click();
+  </script>
+
+
+  <!-- <ul> -->
+  <!-- </ul> -->
 </div>
 {% endblock %}
