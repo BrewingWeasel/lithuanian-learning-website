@@ -6,11 +6,11 @@ const linkedVals = {
   "declension_pattern": ["text", "declension_pattern", "Declension Group $"],
   "wiktionary_link": [
     "href",
-    "lemma",
+    "raw_lemma",
     "https://en.wiktionary.org/wiki/$#Lithuanian",
   ],
-  "forvo_link": ["href", "lemma", "https://forvo.com/search/$/lt/"],
-  "dict_link": ["href", "lemma", "http://www.lietuviu-anglu.com/$"],
+  "forvo_link": ["href", "raw_lemma", "https://forvo.com/search/$/lt/"],
+  "dict_link": ["href", "raw_lemma", "http://www.lietuviu-anglu.com/$"],
 };
 
 const cases = {
@@ -68,6 +68,10 @@ const setDetails = function () {
   } else {
     document.getElementById("case_morphology").textContent = "";
   }
+
+  document.getElementById("wiktionary_link").textContent = "Wiktionary link"
+  document.getElementById("forvo_link").textContent = "Pronounciation (forvo)"
+  document.getElementById("dict_link").textContent = "Definition (lietuviu-anglu)"
 };
 
 Array.from(words).forEach(function (element) {

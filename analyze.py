@@ -201,6 +201,7 @@ def analyze(text):
                     token.morph.get("Number"),
                     get_declension(token),
                     verb_endings,
+                    token.lemma_
                 )
             )
 
@@ -228,6 +229,5 @@ def get_declension(token):
             for k, v in IS_DECLENSIONS.items():
                 if token.lemma_.endswith(k):
                     return str(v)
-
 
     return ""
