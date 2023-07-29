@@ -3,14 +3,14 @@
 {% block content %}
 <div class="row">
 <div class="word_area">
-    {% for text, ending, lemma, case, gender, number, declension_pattern, verb_vals, raw_lemma in words %}
+    {% for text, ending, lemma, case, gender, number, tense, person, declension_pattern, verb_vals, raw_lemma in words %}
     {% if text.startswith("\r\n") %}
     <br>
     {% else %}
     {% if case %}
     <p1 class="word" lemma={{lemma}} case={{case[0]}} number={{number[0]}} gender={{gender[0]}} morphed_word={{text}}{{ending}} declension_pattern={{declension_pattern}} raw_lemma={{raw_lemma}}>{{text}}<span class={{case[0]}}>{{ending}}</span></p1>
     {% else %}
-    <p1 class="word" lemma={{lemma}} verb_values="{{verb_vals}}" morphed_word={{text}} raw_lemma={{raw_lemma}}>{{text}}</p1>
+    <p1 class="word" lemma={{lemma}} verb_values="{{verb_vals}}" tense="{{tense}}" person="{{person}}" number="{{number[0]}}" morphed_word="{{text}}" raw_lemma="{{raw_lemma}}">{{text}}</p1>
     {% endif %}
     {% endif %}
     {% endfor %}
@@ -22,6 +22,9 @@
     <p id="verb_vals"></p>
     <hr id="solid">
     <p id="gender"></>
+    <p id="number"></>
+    <p id="tense"></>
+    <p id="person"></>
     <p id="declension_pattern"></>
     <hr id="solid">
     <p><a id="wiktionary_link" href="https://en.wiktionary.org/wiki/kalnas#Lithuanian"></a></p>

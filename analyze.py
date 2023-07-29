@@ -148,6 +148,34 @@ IS_DECLENSIONS = {
     "yse": 3,
 }
 
+PERSONS = {
+    "1": "First",
+    "2": "Second",
+    "3": "Third",
+}
+
+TENSES = {
+    "Past": "Past",
+    "Pres": "Present",
+    "Fut": "Future",
+}
+
+
+def process_person(inp):
+    if inp:
+        print(inp)
+        return PERSONS[inp[0]] + " person"
+    else:
+        return inp
+
+
+def process_tense(inp):
+    if inp:
+        return TENSES[inp[0]]
+    else:
+        return inp
+
+
 ALL_ENDINGS = []
 for i in ENDINGS.values():
     ALL_ENDINGS += i
@@ -173,7 +201,6 @@ def analyze(text):
             token_text = token.text
 
         def get_vals(text, ending):
-            # print(text, ending)
             if token.pos_ == "VERB":
                 verb_endings = (
                     str(get_endings(token.lemma_))
@@ -181,6 +208,7 @@ def analyze(text):
                     .rstrip(")")
                     .replace("'", "")
                 )
+                print(token.morph, token.text)
             else:
                 verb_endings = ""
             lemma = ""
@@ -199,6 +227,8 @@ def analyze(text):
                     token.morph.get("Case"),
                     token.morph.get("Gender"),
                     token.morph.get("Number"),
+                    process_tense(token.morph.get("Tense")),
+                    process_person(token.morph.get("Person")),
                     get_declension(token),
                     verb_endings,
                     token.lemma_

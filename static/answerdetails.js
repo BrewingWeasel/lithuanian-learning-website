@@ -3,6 +3,9 @@ const linkedVals = {
   "the_word_lemma": ["text", "lemma", "($)"],
   "verb_vals": ["text", "verb_values", "$"],
   "gender": ["text", "gender", "$"],
+  "person": ["text", "number", "$"],
+  "person": ["text", "person", "$"],
+  "tense": ["text", "tense", "$"],
   "declension_pattern": ["text", "declension_pattern", "Declension Group $"],
   "wiktionary_link": [
     "href",
