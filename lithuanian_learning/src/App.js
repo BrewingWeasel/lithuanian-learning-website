@@ -1,7 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
 import { useState } from 'react'
+
+
+function NavBar() {
+    return (
+      <div id="header">
+        <ul>
+          <li><a href="">Home</a></li>
+          <li><a href="resources">Resources</a></li>
+          <li><a href="wip">Decliner</a></li>
+          <li><a href="wip">Conjugator</a></li>
+          <li><a href="about">About</a></li>
+        </ul>
+      </div>
+    );
+}
 
 function App() {
 
@@ -28,6 +42,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
        <p>To get your profile details: </p><button onClick={getData}>Click me</button>
         {info && <div>
               <p>Translation: {info.translation}</p>
