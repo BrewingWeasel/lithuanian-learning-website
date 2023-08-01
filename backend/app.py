@@ -16,3 +16,10 @@ def analyze_page():
 @app.route("/resources")
 def resources():
     return render_template("resources.html")
+
+
+@app.route("/info")
+def info():
+    return {
+        "word": "Žodis",
+    }
