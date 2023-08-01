@@ -4,13 +4,10 @@ import analyze
 app = Flask(__name__)
 
 
-@app.route("/", methods=["POST", "GET"])
+@app.route("/analyze_text", methods=["POST"])
 def analyze_page():
-    if request.method == "POST":
-        text = request.form["text"]
-        return render_template("answer.html", words=analyze.analyze(text))
-    else:
-        return render_template("input.html")
+    text = request.form["text"]
+    return {"words": analyze.analyze(text)}
 
 
 @app.route("/resources")
