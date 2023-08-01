@@ -97,7 +97,7 @@ a {
   flex: 70%;
 }
 
-.specific_word {
+.specific_word_active {
   background-color: #26233a;
   border-radius: 8px;
   margin: 1em 0.3em;
@@ -106,10 +106,10 @@ a {
   font-size: 18px;
 }
 
-.specific_word a {
+.specific_word_active a {
   text-decoration: none;
 }
-.specific_word a:hover {
+.specific_word_active a:hover {
   text-decoration: underline;
 }
 

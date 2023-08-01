@@ -46,6 +46,9 @@ function formatWords(string, formatting) {
 }
 
 const setDetails = function () {
+  document.getElementById("specific_word").className = "specific_word_active";
+
+
   for (const property in linkedVals) {
     const [replaceType, source, formatting] = linkedVals[property];
     if (replaceType === "text") {
